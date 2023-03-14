@@ -1,45 +1,62 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav  #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar class="text-white">
+<mat-sidenav-container class="sidenav-container" >
+  <!-- add ng if here for admin /user  or not registerd at all-->
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar class="text-white" >
       <h3>Admin name</h3>
-
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#"  > <span class="text-white">Link 1</span></a>
-      <a mat-list-item href="#"  > <span class="text-white">Link 2</span></a>
-      <a mat-list-item href="#"  > <span class="text-white">Link 3  </span></a>
-
+      <a
+        mat-list-item
+        [routerLink]="['/dashboard']"
+        routerLinkActive="router-link-active"
+      >
+        <span class="text-white d-flex align-items-center gap-2">      <mat-icon> dashboard</mat-icon>
+          Dashboard</span></a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/allCandidates']"
+        routerLinkActive="router-link-active"
+      >
+      <span class="text-white d-flex align-items-center gap-2">      <mat-icon> groups</mat-icon>
+        Candidates</span></a
+      >
+      <a mat-list-item href="#"> <span class="text-white">jobs</span></a>
+      <a mat-list-item href="#"> <span class="text-white">questions</span></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <!-- add ng if here for admin /user navbar or not  registerd at all -->
+    <mat-toolbar color="primary" >
       <ng-container *ngIf="drawer">
-        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       </ng-container>
       <span>Admin</span>
       <span class="example-spacer"></span>
 
-      <button mat-icon-button [matMenuTriggerFor]="menu" >
+      <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>person</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Dashboard</button>
         <button mat-menu-item>Log Out</button>
       </mat-menu>
-
     </mat-toolbar>
     <!-- pages routing -->
-
-    <app-stat-card></app-stat-card>
     <router-outlet></router-outlet>
-
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-

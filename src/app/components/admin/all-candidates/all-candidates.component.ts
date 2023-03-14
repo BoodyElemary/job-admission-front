@@ -26,6 +26,6 @@ export class AllCandidatesComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+    console.log(this.dataSource);
   }
 }
-
