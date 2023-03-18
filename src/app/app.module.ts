@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //custom modules imports
-import { AdminModule } from './admin/admin.module';
-import { UserModule } from './user/user.module';
+import { AdminModule } from './admin.module';
+import { UserModule } from './user.module';
 
 //angular material modules
 import { MatSidenavModule } from '@angular/material/sidenav';
