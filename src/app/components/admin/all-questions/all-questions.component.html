@@ -1,0 +1,65 @@
+<app-admin-header></app-admin-header>
+<div class="mat-elevation-z8">
+
+  <div class="d-flex justify-content-end mx-2">
+    <mat-form-field class="col-lg-2 col-12 mt-3 " appearance="outline">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput placeholder="search for Candidates" id="questionSearchInput">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="questions" matSort >
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let question"> {{question.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="job">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Job </th>
+        <td mat-cell *matCellDef="let question"> {{question.job.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="question">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Question </th>
+        <td mat-cell *matCellDef="let question"> {{question.question}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="option1">
+        <th mat-header-cell *matHeaderCellDef> Option 1 </th>
+        <td mat-cell *matCellDef="let question"> {{question.option1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="option2">
+        <th mat-header-cell *matHeaderCellDef> Option 2 </th>
+        <td mat-cell *matCellDef="let question"> {{question.option2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="option3">
+        <th mat-header-cell *matHeaderCellDef> Option 3 </th>
+        <td mat-cell *matCellDef="let question"> {{question.option3}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="option4">
+        <th mat-header-cell *matHeaderCellDef> Option 4 </th>
+        <td mat-cell *matCellDef="let question"> {{question.option4}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rightOption">
+        <th mat-header-cell *matHeaderCellDef> Right Option </th>
+        <td mat-cell *matCellDef="let question" class="text-success"> {{question.right_option}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+
+
+</div>

@@ -20,14 +20,13 @@ import { StatCardComponent } from './components/admin/stat-card/stat-card.compon
 import {MatCardModule} from '@angular/material/card';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
-import { AllCandidatesComponent } from './components/admin/all-candidates/all-candidates.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
-
-
+import { AllQuestionsComponent } from './components/admin/all-questions/all-questions.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -37,8 +36,8 @@ import { AdminHeaderComponent } from './components/admin/admin-header/admin-head
     StatCardComponent,
     AdminHomeComponent,
     NotFoundComponent,
-    AllCandidatesComponent,
     AdminHeaderComponent,
+    AllQuestionsComponent,
 
   ],
   imports: [
@@ -58,7 +57,8 @@ import { AdminHeaderComponent } from './components/admin/admin-header/admin-head
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

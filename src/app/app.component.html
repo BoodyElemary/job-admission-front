@@ -29,7 +29,9 @@
         Candidates</span></a
       >
       <a mat-list-item href="#"> <span class="text-white">jobs</span></a>
-      <a mat-list-item href="#"> <span class="text-white">questions</span></a>
+      <a mat-list-item
+      [routerLink]="['/allQuestions']"
+      > <span class="text-white">questions</span></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
