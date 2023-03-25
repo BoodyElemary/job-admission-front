@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 //custom modules imports
 import { AdminModule } from './admin.module';
 import { UserModule } from './user.module';
@@ -24,9 +25,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
 import { AllQuestionsComponent } from './components/admin/all-questions/all-questions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddQuestionsComponent } from './components/admin/add-questions/add-questions.component';
+import { DeleteQuestionDialogComponent } from './components/admin/delete-question-dialog/delete-question-dialog.component';
+import { JobQuestionsComponent } from './components/admin/job-questions/job-questions.component';
+import { QuestionsFormComponent } from './components/admin/questions-form/questions-form.component';
+import {MatSelectModule} from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 
 
@@ -38,6 +46,11 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     AdminHeaderComponent,
     AllQuestionsComponent,
+    AddQuestionsComponent,
+    DeleteQuestionDialogComponent,
+    JobQuestionsComponent,
+    QuestionsFormComponent
+
 
   ],
   imports: [
@@ -58,7 +71,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    HttpClientModule
+    MatDialogModule,
+    HttpClientModule,
+    MatSelectModule,
+    MatOptionModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

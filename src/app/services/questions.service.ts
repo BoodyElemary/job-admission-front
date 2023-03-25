@@ -8,9 +8,18 @@ import { IjobQuestions } from '../models/IjobQuestions';
 })
 export class QuestionsService {
 
-  private readonly API_URL='http://127.0.0.1:8000/api/jobQuestions'
+  private  API_URL:string='http://127.0.0.1:8000/api/jobQuestions'
   constructor(private http:HttpClient) { }
   getQuestions(): Observable<any[]> {
     return this.http.get<any[]>(this.API_URL);
   }
+  getJobQuestions(jobId:number|string|null):Observable<any[]>{
+    return this.http.get<any[]>(`${this.API_URL}/${jobId}`);
+
+  }
+
+  getAllJobs(){
+    return this.http.get<any[]>(`http://127.0.0.1:8000/api/allJobs`);
+  }
+
 }

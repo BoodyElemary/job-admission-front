@@ -1,0 +1,97 @@
+<mat-card class="mt-5">
+  <mat-card-content>
+<form action="">
+  <h3 class="p-1" >Choose a Specifc Job To Add A Question To It.</h3>
+
+  <mat-form-field appearance="outline" class="col-lg-3 col-12">
+    <mat-label>job</mat-label>
+    <mat-select [(ngModel)]="jobId" >
+      <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option> -->
+      <mat-option *ngFor="let job of jobs"  [value]="job.id">
+        {{job.title}}
+      </mat-option>
+
+
+    </mat-select>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <div id="form-header" class="mt-4">
+    <div class="d-flex flex-column gap-3">
+      <label for="question">Enter your Question:</label>
+      <mat-form-field appearance="outline" class="col-lg-6 col-12" >
+        <mat-label>Enter your Question</mat-label>
+        <input matInput placeholder="" id="question" >
+        <mat-icon matSuffix>question_mark</mat-icon>
+
+      </mat-form-field>
+    </div>
+    <div class="d-lg-flex gap-lg-5">
+    <div class="d-flex flex-column gap-3 mt-1">
+      <label for="firstAnswer">Answer 1:</label>
+      <mat-form-field appearance="outline" class=" col-12" >
+        <mat-label>Enter your Answer</mat-label>
+        <input matInput placeholder="" id="firstAnswer"  [(ngModel)]="answer1">
+
+      </mat-form-field>
+    </div>
+
+
+    <div class="d-flex flex-column gap-3 mt-1">
+      <label for="secondAnswers">Answer 2:</label>
+      <mat-form-field appearance="outline" class=" col-12" >
+        <mat-label>Enter your Answer</mat-label>
+        <input matInput placeholder="" id="secondAnswers"  [(ngModel)]="answer2">
+
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex flex-column gap-3 mt-1">
+      <label for="secondAnswer">Answer 3:</label>
+      <mat-form-field appearance="outline" class=" col-12" >
+        <mat-label>Enter your Answer</mat-label>
+        <input matInput placeholder="" id="secondAnswer"  [(ngModel)]="answer3">
+
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex flex-column gap-3 mt-1">
+      <label for="thirdAnswer">Answer 4:</label>
+      <mat-form-field appearance="outline" class=" col-12" >
+        <mat-label>Enter your Answer</mat-label>
+        <input matInput placeholder="" id="thirdAnswer"  [(ngModel)]="answer4">
+
+      </mat-form-field>
+    </div>
+  </div>
+
+  <p class="p-1" >Choose The Right Answer.</p>
+
+  <div class="d-flex flex-column gap-3 mt-1">
+
+    <mat-form-field appearance="outline" class="col-lg-3 col-12">
+      <mat-label>choose correct answer</mat-label>
+      <mat-select [(ngModel)]="jobId" >
+
+        <mat-option *ngFor="let job of jobs"  [value]="job.id">
+          {{job.title}}
+        </mat-option>
+
+
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  </div>
+  <!-- <button (click)="logger()">ass</button> -->
+  <button mat-raised-button color="primary" class="mt-3 col-lg-1 col-12"> <span class="fs-6">Submit</span></button>
+
+
+</form>
+
+  </mat-card-content>
+</mat-card>
+
