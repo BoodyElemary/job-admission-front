@@ -12,43 +12,57 @@ import { DeleteQuestionDialogComponent } from '../delete-question-dialog/delete-
 @Component({
   selector: 'app-job-questions',
   templateUrl: './job-questions.component.html',
-  styleUrls: ['./job-questions.component.css']
+  styleUrls: ['./job-questions.component.css'],
 })
 export class JobQuestionsComponent implements OnInit {
-  jobId:number|null=0;
-  jobName:string="";
-  questions:any;
+  jobId: number | null = 0;
+  jobName: string = '';
+  questions: any;
 
-  displayedColumns: string[] = ['id', 'question', 'option1', 'option2','option3','option4','rightOption','Action'];
+  displayedColumns: string[] = [
+    'id',
+    'question',
+    'option1',
+    'option2',
+    'option3',
+    'option4',
+    'rightOption',
+    'Action',
+  ];
   jobQuestions = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort ;
+  @ViewChild(MatSort)
+  sort!: MatSort;
 
-  constructor(private currentRoute:ActivatedRoute, private questionServices:QuestionsService ,public dialog:MatDialog){
-    this.jobId=Number(this.currentRoute.snapshot.paramMap.get("id"));
+  constructor(
+    private currentRoute: ActivatedRoute,
+    private questionServices: QuestionsService,
+    public dialog: MatDialog
+  ) {
+    this.jobId = Number(this.currentRoute.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
     console.log(this.jobId);
-    this.questions= this.questionServices.getJobQuestions(this.jobId).subscribe({
-      next:(resposne)=>{
-        this.questions=resposne;
-        this.jobName=Object.keys(this.questions)[0];
-        this.jobQuestions.data=this.questions[this.jobName];
-        console.log(this.jobQuestions.data);
-        this.jobQuestions.paginator=this.paginator;
-        this.jobQuestions.sort=this.sort;
-      }
-    });
+    this.questions = this.questionServices
+      .getJobQuestions(this.jobId)
+      .subscribe({
+        next: (resposne) => {
+          this.questions = resposne;
+          this.jobName = Object.keys(this.questions)[0];
+          this.jobQuestions.data = this.questions[this.jobName];
+          console.log(this.jobQuestions.data);
+          this.jobQuestions.paginator = this.paginator;
+          this.jobQuestions.sort = this.sort;
+        },
+      });
     this.searchQuestions();
   }
 
-
-  searchQuestions(){
-
-    const searchInput=document.getElementById("jobQuestionSearchInput");
+  searchQuestions() {
+    const searchInput = document.getElementById('jobQuestionSearchInput');
 
     const searchObservable = fromEvent(searchInput!, 'input').pipe(
       distinctUntilChanged()
@@ -58,35 +72,23 @@ export class JobQuestionsComponent implements OnInit {
       const filterValue = event.target.value.trim().toLowerCase();
       this.jobQuestions.filter = filterValue;
     });
-
-
-
-
   }
 
-
-  editFun(id:number){
+  editFun(id: number) {
     console.log(id);
   }
 
-
-
-  openDialog(id:number): void {
+  openDialog(id: number): void {
     const dialogRef = this.dialog.open(DeleteQuestionDialogComponent, {
       // data: {name: this.name, animal: this.animal},
       width: '500px',
-
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      if(result){
+      if (result) {
         this.editFun(id);
       }
     });
   }
-
-
-
-
 }

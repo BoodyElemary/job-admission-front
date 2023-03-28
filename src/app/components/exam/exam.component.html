@@ -1,0 +1,28 @@
+<form>
+  <div>
+    <p>
+      {{ jobName }}
+    </p>
+  </div>
+
+  <ng-container *ngFor="let question of QuestionsObj | keyvalue">
+    <p>{{ question.key }}</p>
+    <label id="example-radio-group-label">{{ question.key }}</label>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+    >
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let answer of QuestionsObj[question.key]"
+        [value]="answer"
+      >
+        {{ answer }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </ng-container>
+
+  <div class="container">
+    <button (click)="examSubmit()">submit</button>
+  </div>
+</form>
