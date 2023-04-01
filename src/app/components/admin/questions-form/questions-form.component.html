@@ -1,30 +1,30 @@
 <mat-card class="mt-5">
   <mat-card-content>
-<form action="">
+<form name="questionsForm" (ngSubmit)="onSubmit()" [formGroup]="QuestionForm">
   <h3 class="p-1" >Choose a Specifc Job To Add A Question To It.</h3>
 
-  <mat-form-field appearance="outline" class="col-lg-3 col-12">
+  <mat-form-field appearance="outline" class="col-lg-3 col-12 mb-2">
     <mat-label>job</mat-label>
-    <mat-select [(ngModel)]="jobId" >
+    <mat-select formControlName="formJob">
       <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
         {{food.viewValue}}
       </mat-option> -->
-      <mat-option *ngFor="let job of jobs"  [value]="job.id">
+      <mat-option *ngFor="let job of jobs"  [value]="job.id" required>
         {{job.title}}
       </mat-option>
 
-
     </mat-select>
+    <mat-error *ngIf="QuestionForm.get('formJob')?.invalid" class="m-2">please choose a job</mat-error>
   </mat-form-field>
-  <mat-divider></mat-divider>
+  <mat-divider class="my-2"></mat-divider>
   <div id="form-header" class="mt-4">
     <div class="d-flex flex-column gap-3">
       <label for="question">Enter your Question:</label>
-      <mat-form-field appearance="outline" class="col-lg-6 col-12" >
+      <mat-form-field appearance="outline" class="col-lg-6 col-12 mb-2"  >
         <mat-label>Enter your Question</mat-label>
-        <input matInput placeholder="" id="question" >
+        <input matInput placeholder="" id="question" formControlName="question"   >
         <mat-icon matSuffix>question_mark</mat-icon>
-
+        <mat-error *ngIf="QuestionForm.get('question')?.invalid" class="my-1">please enter a question</mat-error>
       </mat-form-field>
     </div>
     <div class="d-lg-flex gap-lg-5">
@@ -32,7 +32,8 @@
       <label for="firstAnswer">Answer 1:</label>
       <mat-form-field appearance="outline" class=" col-12" >
         <mat-label>Enter your Answer</mat-label>
-        <input matInput placeholder="" id="firstAnswer"  [(ngModel)]="answer1">
+        <input matInput placeholder="" id="firstAnswer" formControlName="answer1" required  required [(ngModel)]="answer1Dropdown">
+        <mat-error *ngIf="QuestionForm.get('answer1')?.invalid" class="my-1">please enter answer 1</mat-error>
 
       </mat-form-field>
     </div>
@@ -42,8 +43,8 @@
       <label for="secondAnswers">Answer 2:</label>
       <mat-form-field appearance="outline" class=" col-12" >
         <mat-label>Enter your Answer</mat-label>
-        <input matInput placeholder="" id="secondAnswers"  [(ngModel)]="answer2">
-
+        <input matInput placeholder="" id="secondAnswers" formControlName="answer2" required  required [(ngModel)]="answer2Dropdown">
+        <mat-error *ngIf="QuestionForm.get('answer2')?.invalid" class="my-1">please enter answer 2</mat-error>
       </mat-form-field>
     </div>
 
@@ -51,8 +52,8 @@
       <label for="secondAnswer">Answer 3:</label>
       <mat-form-field appearance="outline" class=" col-12" >
         <mat-label>Enter your Answer</mat-label>
-        <input matInput placeholder="" id="secondAnswer"  [(ngModel)]="answer3">
-
+        <input matInput placeholder="" id="secondAnswer" formControlName="answer3" required required [(ngModel)]="answer3Dropdown">
+        <mat-error *ngIf="QuestionForm.get('answer3')?.invalid" class="my-1">please enter answer 3</mat-error>
       </mat-form-field>
     </div>
 
@@ -60,7 +61,8 @@
       <label for="thirdAnswer">Answer 4:</label>
       <mat-form-field appearance="outline" class=" col-12" >
         <mat-label>Enter your Answer</mat-label>
-        <input matInput placeholder="" id="thirdAnswer"  [(ngModel)]="answer4">
+        <input matInput placeholder="" id="thirdAnswer" formControlName="answer4" required  required [(ngModel)]="answer4Dropdown">
+        <mat-error *ngIf="QuestionForm.get('answer4')?.invalid" class="my-1">please enter answer 4</mat-error>
 
       </mat-form-field>
     </div>
@@ -72,22 +74,38 @@
 
     <mat-form-field appearance="outline" class="col-lg-3 col-12">
       <mat-label>choose correct answer</mat-label>
-      <mat-select [(ngModel)]="jobId" >
+      <mat-select formControlName ="rightAnswer" required  >
 
-        <mat-option *ngFor="let job of jobs"  [value]="job.id">
-          {{job.title}}
+         <!-- <mat-option required [value]="answer1Dropdown|| null">
+          fssfd1
         </mat-option>
+        <mat-option  required [value]="2">
+          fssfd2
+        </mat-option>
+        <mat-option  required [value]="3">
+          fssfd3
+        </mat-option>
+        <mat-option  required [value]="4">
+          fssfd4
+        </mat-option> -->
+
+        <mat-option [value]="answer1Dropdown  || null"  >answer1</mat-option>
+        <mat-option [value]="answer2Dropdown  || null"  >answer2</mat-option>
+        <mat-option [value]="answer3Dropdown  || null"  >answer3</mat-option>
+        <mat-option [value]="answer4Dropdown || null" >answer4</mat-option>
 
 
       </mat-select>
+      <mat-error *ngIf="QuestionForm.get('rightAnswer')?.invalid" class="my-1">please choose the right answer</mat-error>
+
     </mat-form-field>
   </div>
 
-  <mat-divider></mat-divider>
+  <mat-divider class="my-2"></mat-divider>
 
   </div>
   <!-- <button (click)="logger()">ass</button> -->
-  <button mat-raised-button color="primary" class="mt-3 col-lg-1 col-12"> <span class="fs-6">Submit</span></button>
+  <button mat-raised-button color="primary" class="mt-3 col-lg-1 col-12" type="submit"  (click)="onSubmit()"> <span class="fs-6">Submit</span></button>
 
 
 </form>

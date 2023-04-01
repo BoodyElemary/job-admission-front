@@ -7,6 +7,7 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
+    *ngIf="adminNav"
   >
     <mat-toolbar class="text-white" >
       <h3>Admin name</h3>
@@ -36,7 +37,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <!-- add ng if here for admin /user navbar or not  registerd at all -->
-    <mat-toolbar color="primary" >
+    <mat-toolbar color="primary" *ngIf="adminNav" >
       <ng-container *ngIf="drawer">
         <button
           type="button"
@@ -57,6 +58,23 @@
         <button mat-menu-item>Dashboard</button>
         <button mat-menu-item>Log Out</button>
       </mat-menu>
+    </mat-toolbar>
+
+    <mat-toolbar color="primary" *ngIf="userNav" style="background-color: #242c30;" >
+
+      <span>UserName</span>
+      <span class="example-spacer"></span>
+
+      <a  mat-button  class="mx-2 fs-6" >
+      All jobs
+      </a>
+      <a  mat-button  class="mx-2 fs-6">
+      Profile
+      </a>
+      <a  mat-button  class="mx-2 fs-6">
+      Log out
+      </a>
+
     </mat-toolbar>
     <!-- pages routing -->
     <router-outlet></router-outlet>

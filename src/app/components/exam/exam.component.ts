@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 interface Question {
   [key: string]: string[];
@@ -14,11 +15,14 @@ interface Question {
 })
 export class ExamComponent {
   examQuestions: any;
-  examAnswers: any;
+  examAnswers: any[] = [];
   jobId: number = 0;
   jobName: string = '';
   QuestionsObj: Question = {};
-  form: FormGroup | null = null;
+  visibleExamQuestions: any[] = [];
+  form: FormGroup = new FormGroup({});
+  pageSize: number = 4;
+  length: number = 0;
 
   constructor(
     private service: QuestionsService,
@@ -27,14 +31,16 @@ export class ExamComponent {
     private fb: FormBuilder
   ) {
     this.jobId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    // console.log(this.activatedRoute.snapshot.paramMap)
   }
+
   ngOnInit(): void {
     this.examQuestions = this.service.getJobQuestions(this.jobId).subscribe({
       next: (response) => {
         this.examQuestions = response;
         this.jobName = Object.keys(this.examQuestions)[0];
         this.examAnswers = this.examQuestions[`${this.jobName}`];
-        // this.examQuestions = this.questions[this.jobName];
+        this.length = this.examAnswers.length;
         this.examAnswers.forEach((item: any) => {
           this.QuestionsObj[`${item.question}`] = [
             item.option1,
@@ -54,21 +60,29 @@ export class ExamComponent {
           }
         }
 
-        console.log(this.QuestionsObj[`${Object.keys(this.QuestionsObj)[0]}`]);
-        console.log(this.examAnswers);
+        this.onPageChange({
+          pageIndex: 0,
+          pageSize: this.pageSize,
+          length: this.length,
+        });
       },
     });
   }
-  examSubmit() {
-    // let final: any = [];
-    // document.getElementsByName('answer1');
-    // answers.forEach((item: any) => {
-    //   final.push(item['checked']);
-    // });
-    // console.log(final);
-    // let answers = document.querySelector('input[name:"answer1"]:checked');
-    // console.log(answers);
 
-    console.log(this.form);
+  onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    const endIndex = startIndex + event.pageSize;
+    this.visibleExamQuestions = this.examAnswers.slice(startIndex, endIndex);
+
+    this.visibleExamQuestions = this.visibleExamQuestions.map((item: any) => {
+      return { id: item.id, question: item.question };
+    });
+  }
+
+
+
+
+  examSubmit() {
+    console.log(this.form.value);
   }
 }

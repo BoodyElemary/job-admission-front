@@ -1,28 +1,41 @@
-<form>
+<form [formGroup]="form" class="container">
   <div>
-    <p>
+    <h1   style="color: #019588;" class="mb-3 mt-2" >
       {{ jobName }}
-    </p>
+    </h1>
   </div>
 
-  <ng-container *ngFor="let question of QuestionsObj | keyvalue">
-    <p>{{ question.key }}</p>
-    <label id="example-radio-group-label">{{ question.key }}</label>
-    <mat-radio-group
-      aria-labelledby="example-radio-group-label"
-      class="example-radio-group"
-    >
-      <mat-radio-button
-        class="example-radio-button"
-        *ngFor="let answer of QuestionsObj[question.key]"
-        [value]="answer"
-      >
-        {{ answer }}
-      </mat-radio-button>
-    </mat-radio-group>
+
+
+  <ng-container *ngFor="let visibleExamQuestion of visibleExamQuestions">
+
+
+    <mat-card class="d-flex flex-row align-items-center">
+      <div style="height: 150px;  width: 40px;" class="bg-warning"></div>
+        <div class="p-4 ">
+          <label class="fs-3  py-4" id="{{ visibleExamQuestion.id }}">{{ visibleExamQuestion.question }}</label>
+          <br>
+          <mat-radio-group
+
+          formControlName="{{ visibleExamQuestion.question }}"
+          class="mt-4"
+
+          >
+          <mat-radio-button
+          *ngFor="let option of QuestionsObj[visibleExamQuestion.question]"
+          [value]="option"
+          >
+          {{ option }}
+        </mat-radio-button>
+      </mat-radio-group>
+        </div>
+</mat-card>
+  <br>
   </ng-container>
 
-  <div class="container">
-    <button (click)="examSubmit()">submit</button>
+  <mat-paginator [length]="examAnswers.length" [pageSize]="4" (page)="onPageChange($event)"></mat-paginator>
+
+  <div class="my-4 mx-2 row justify-content-end ">
+    <button (click)="examSubmit()" mat-raised-button color="primary" class="col-lg-1 col-12 px-4">Submit</button>
   </div>
 </form>
