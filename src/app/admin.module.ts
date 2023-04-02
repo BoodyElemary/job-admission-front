@@ -7,12 +7,20 @@ import { AllQuestionsComponent } from './components/admin/all-questions/all-ques
 import { JobQuestionsComponent } from './components/admin/job-questions/job-questions.component';
 import { AddQuestionsComponent } from './components/admin/add-questions/add-questions.component';
 import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
+import { AllCandidatesComponent } from './components/admin/all-candidates/all-candidates.component';
 
 const routes: Routes = [
   { path: 'allQuestions', component: AllQuestionsComponent },
   { path: 'jobQuestions/:id', component: JobQuestionsComponent },
   { path: 'allQuestions/addQuestion', component: AddQuestionsComponent },
   { path: 'allQuestions/editQuestion/:id', component: EditQuestionsComponent },
+  { path: 'allCandidates', component: AllCandidatesComponent },
+  { path: 'allCandidates/addCandidate', component: AllCandidatesComponent },
+  { path: 'allCandidates/editCandidate/:id', component: AllCandidatesComponent },
+  { path: 'allCandidates/deleteCandidate/:id', component: AllCandidatesComponent },
+    { path: 'allCandidates/findCandidate/:id', component: AllCandidatesComponent },
+
+
 
   { path: 'dashboard', component: AdminHomeComponent, title: 'dashboard' },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },

@@ -35,12 +35,12 @@ export class AdminHeaderComponent {
       this.header.name= "Dashboard";
       this.header.icon="person";
       break;
-      case "JobQuestionsComponent":
-        this.header.name= `${this.jobName}'s Questions`;
+      case "AllCandidatesComponent":
+        this.header.name= "All Candidates";
         this.header.icon="file_copy";
         this.activated=true;
-        this.btnText="Add Question";
-        this.btnRoute="allQuestions/addQuestion";
+        this.btnText="Add Candidate";
+        this.btnRoute="allCandidates/addCandidate";
         console.log(this.jobName);
         break;
         case "AddQuestionsComponent":
@@ -50,7 +50,15 @@ export class AdminHeaderComponent {
           case "EditQuestionsComponent":
           this.header.name= "Edit Question";
           this.header.icon="note_alt";
-          break;
+         break;
+        case "JobQuestionsComponent":
+        this.header.name= `${this.jobName}'s Questions`;
+        this.header.icon="file_copy";
+        this.activated=true;
+        this.btnText="Add Question";
+        this.btnRoute="allQuestions/addQuestion";
+        console.log(this.jobName);
+        break;
 
       default:
         this.header.name= "AllQuestions";

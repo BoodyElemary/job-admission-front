@@ -1,0 +1,76 @@
+<app-admin-header></app-admin-header>
+<div class="mat-elevation-z8">
+
+    <div class="d-flex justify-content-end mx-2">
+        <mat-form-field class="col-lg-2 col-12 mt-3 " appearance="outline">
+            <mat-label>Search</mat-label>
+            <input type="text" matInput placeholder="search for Candidates" id="candidateSearchInput">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+    </div>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="candidates" matSort>
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let candidate"> {{candidate.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <!-- // admin module -->
+                <td mat-cell *matCellDef="let candidate"> <button mat-button routerLink="/candidate/{{candidate.id}}" class="fs-6 text-primary z-0">{{candidate.name}}</button> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let candidate"> {{candidate.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="userName">
+                <th mat-header-cell *matHeaderCellDef> User Name </th>
+                <td mat-cell *matCellDef="let candidate"> {{candidate.userName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Phone </th>
+                <td mat-cell *matCellDef="let candidate"> {{candidate.phone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Address </th>
+                <td mat-cell *matCellDef="let candidate"> {{candidate.address}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="city">
+                <th mat-header-cell *matHeaderCellDef> City </th>
+                <td mat-cell *matCellDef="let candidate"> {{candidate.city}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="state">
+                <th mat-header-cell *matHeaderCellDef> State</th>
+                <td mat-cell *matCellDef="let candidate" class="text-success"> {{candidate.state}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef class="text-center"> Action </th>
+                <td mat-cell *matCellDef="let candidate">
+                    <div class="row justify-content-center align-items-center gap-1 ">
+                        <button mat-raised-button color="warn" class="col-5  z-0" (click)="openDialog(candidate.id)">delete</button>
+                        <button mat-raised-button color="accent" class="col-5  z-0" routerLink="allCandidates/editCandidate/{{candidate.id}}">edit</button>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+
+
+
+</div>
