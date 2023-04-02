@@ -45,8 +45,12 @@ export class QuestionsFormComponent implements OnInit {
   }
   onSubmit(){
     if(this.QuestionForm.valid){
-      console.log(this.QuestionForm.value);
-
+      // console.log(this.QuestionForm.value);
+      this.questionService.addJobQuestions(this.QuestionForm.value).subscribe({
+        next:(response)=>{
+          console.log(response);
+        }
+      })
     }
   }
 

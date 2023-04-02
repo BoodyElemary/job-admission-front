@@ -64,23 +64,27 @@ export class AllQuestionsComponent implements OnInit {
   }
 
 
-  editFun(id:number){
-    console.log(id);
+  deleteQuestion(id: number) {
+    // console.log("object");
+  this.questionService.deleteJobQuestion(id).subscribe({
+    next:(response)=>{
+      this.questions.data=this.questions.data.filter((question)=>question.id !==id);
+      console.log(response)
+    }
+
+  })
   }
 
-
-
-  openDialog(id:number): void {
+  openDialog(id: number): void {
     const dialogRef = this.dialog.open(DeleteQuestionDialogComponent, {
       // data: {name: this.name, animal: this.animal},
       width: '500px',
-
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if(result){
-        this.editFun(id);
+    dialogRef.afterClosed().subscribe((result) => {
+      // console.log('The dialog was saasas');
+      if (result) {
+        this.deleteQuestion(id);
       }
     });
   }

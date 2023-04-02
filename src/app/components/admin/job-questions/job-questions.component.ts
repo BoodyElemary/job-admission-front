@@ -74,8 +74,15 @@ export class JobQuestionsComponent implements OnInit {
     });
   }
 
-  editFun(id: number) {
-    console.log(id);
+  deleteQuestion(id: number) {
+    console.log("object");
+  this.questionServices.deleteJobQuestion(id).subscribe({
+    next:(response)=>{
+      this.jobQuestions.data=this.jobQuestions.data.filter((question)=>question.id !==id);
+      console.log(response)
+    }
+
+  })
   }
 
   openDialog(id: number): void {
@@ -85,9 +92,9 @@ export class JobQuestionsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+      console.log('The dialog was saasas');
       if (result) {
-        this.editFun(id);
+        this.deleteQuestion(id);
       }
     });
   }

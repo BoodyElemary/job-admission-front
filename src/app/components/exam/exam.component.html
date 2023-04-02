@@ -36,6 +36,6 @@
   <mat-paginator [length]="examAnswers.length" [pageSize]="4" (page)="onPageChange($event)"></mat-paginator>
 
   <div class="my-4 mx-2 row justify-content-end ">
-    <button (click)="examSubmit()" mat-raised-button color="primary" class="col-lg-1 col-12 px-4">Submit</button>
+    <button (click)="openDialog()" mat-raised-button color="primary" class="col-lg-1 col-12 px-4">Submit</button>
   </div>
 </form>

@@ -38,6 +38,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { ExamComponent } from './components/exam/exam.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SubmitExamDialogComponent } from './components/submit-exam-dialog/submit-exam-dialog.component';
+import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     JobQuestionsComponent,
     QuestionsFormComponent,
     ExamComponent,
+    SubmitExamDialogComponent,
+    EditQuestionsComponent,
   ],
   imports: [
     BrowserModule,

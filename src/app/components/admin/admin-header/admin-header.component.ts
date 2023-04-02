@@ -46,9 +46,12 @@ export class AdminHeaderComponent {
         case "AddQuestionsComponent":
           this.header.name= "Add Questions";
           this.header.icon="note_add";
-
-
           break;
+          case "EditQuestionsComponent":
+          this.header.name= "Edit Question";
+          this.header.icon="note_alt";
+          break;
+
       default:
         this.header.name= "AllQuestions";
         this.header.icon="person";
@@ -58,9 +61,7 @@ export class AdminHeaderComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    // this.jobName=changes['jobName']['currentValue'];
+
     this.header.name= `${this.jobName}'s Questions`;
 
 

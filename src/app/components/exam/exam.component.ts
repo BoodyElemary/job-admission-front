@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { SubmitExamDialogComponent } from '../submit-exam-dialog/submit-exam-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Question {
   [key: string]: string[];
@@ -28,7 +30,8 @@ export class ExamComponent {
     private service: QuestionsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog:MatDialog
   ) {
     this.jobId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     // console.log(this.activatedRoute.snapshot.paramMap)
@@ -83,6 +86,32 @@ export class ExamComponent {
 
 
   examSubmit() {
-    console.log(this.form.value);
+    let exam:any ={};
+    exam.jobId=this.jobId;
+    exam.userId=3;
+    exam.userAnswers={...this.form.value};
+    console.log((exam));
+    this.service.submitQuestions(exam).subscribe({
+      next:(response)=>{
+        console.log(response);
+      }
+    })
+
+
+  }
+
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SubmitExamDialogComponent, {
+      // data: {name: this.name, animal: this.animal},
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.examSubmit();
+      }
+    });
   }
 }
