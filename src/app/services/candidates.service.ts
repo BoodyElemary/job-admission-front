@@ -18,8 +18,9 @@ export class CandidatesService {
   editCandidate(userId: number | string |null ,user:any): Observable<any[]> {
     return this.http.put<any[]>(`${this.API_URL}/updateUser/${userId}`,user);
   }
-  deleteCandidate(userId: number | string |null ): Observable<any[]> {
-    return this.http.delete<any[]>(`${this.API_URL}/deleteUser/${userId}`);
+  deleteCandidate(userId: number | string | null): Observable<any[]> {
+
+    return this.http.delete<any[]>(`${this.API_URL}/deletedUser/${userId}`);
   }
 findCandidate(userId: number | string |null ): Observable<any[]> {
     return this.http.get<any[]>(`${this.API_URL}/showUser/${userId}`);

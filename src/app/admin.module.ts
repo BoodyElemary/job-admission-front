@@ -8,6 +8,8 @@ import { JobQuestionsComponent } from './components/admin/job-questions/job-ques
 import { AddQuestionsComponent } from './components/admin/add-questions/add-questions.component';
 import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
 import { AllCandidatesComponent } from './components/admin/all-candidates/all-candidates.component';
+import { CandidatesFormComponent} from './components/admin/candidates-form/candidates-form.component';
+import { EditCandidatesFormComponent } from './components/admin/edit-candidates-form/edit-candidates-form.component';
 
 const routes: Routes = [
   { path: 'allQuestions', component: AllQuestionsComponent },
@@ -15,8 +17,8 @@ const routes: Routes = [
   { path: 'allQuestions/addQuestion', component: AddQuestionsComponent },
   { path: 'allQuestions/editQuestion/:id', component: EditQuestionsComponent },
   { path: 'allCandidates', component: AllCandidatesComponent },
-  { path: 'allCandidates/addCandidate', component: AllCandidatesComponent },
-  { path: 'allCandidates/editCandidate/:id', component: AllCandidatesComponent },
+  { path: 'allCandidates/addCandidate', component: CandidatesFormComponent },
+  { path: 'allCandidates/editCandidate/:id', component: EditCandidatesFormComponent },
   { path: 'allCandidates/deleteCandidate/:id', component: AllCandidatesComponent },
     { path: 'allCandidates/findCandidate/:id', component: AllCandidatesComponent },
 

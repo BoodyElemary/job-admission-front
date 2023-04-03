@@ -41,6 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SubmitExamDialogComponent } from './components/submit-exam-dialog/submit-exam-dialog.component';
 import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
 import { AllCandidatesComponent } from './components/admin/all-candidates/all-candidates.component';
+import { CandidatesFormComponent} from './components/admin/candidates-form/candidates-form.component';
+import { EditCandidatesFormComponent } from './components/admin/edit-candidates-form/edit-candidates-form.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { AllCandidatesComponent } from './components/admin/all-candidates/all-ca
     SubmitExamDialogComponent,
     EditQuestionsComponent,
     AllCandidatesComponent,
+    CandidatesFormComponent,
+    EditCandidatesFormComponent,
   ],
   imports: [
     BrowserModule,

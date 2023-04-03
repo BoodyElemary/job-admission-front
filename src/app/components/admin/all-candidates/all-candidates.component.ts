@@ -26,6 +26,7 @@ export class AllCandidatesComponent implements OnInit {
   constructor(private candidateService: CandidatesService, public dialog: MatDialog) { }
   ngOnInit(): void {
     this.getCandidates();
+    this.searchCandidates();
     // this.searchQuestions();
   }
 
@@ -50,6 +51,23 @@ export class AllCandidatesComponent implements OnInit {
         console.log(response)
       }
     })
+  }
+   searchCandidates(){
+
+    const searchInput=document.getElementById("candidateSearchInput");
+
+    const searchObservable = fromEvent(searchInput!, 'input').pipe(
+      distinctUntilChanged()
+    );
+
+    searchObservable.subscribe((event: any) => {
+      const filterValue = event.target.value.trim().toLowerCase();
+      this.candidates.filter = filterValue;
+    });
+
+
+
+
   }
   openDialog(id: number): void {
     const dialogRef = this.dialog.open(DeleteQuestionDialogComponent, {
