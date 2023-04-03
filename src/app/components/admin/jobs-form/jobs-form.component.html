@@ -9,6 +9,7 @@
       <label for="title">Enter Job Title:</label>
       <mat-form-field appearance="outline" class="col-lg-6 col-12 mb-2"  >
         <mat-label>Enter Job Title</mat-label>
+        <input matInput placeholder="" id="title" formControlName="title">
         <mat-error *ngIf="JobForm.get('title')?.invalid" class="my-1">please enter a title</mat-error>
       </mat-form-field>
     </div>
