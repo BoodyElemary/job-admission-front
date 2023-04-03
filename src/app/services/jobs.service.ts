@@ -14,14 +14,18 @@ export class JobsService {
   getJob(jobId: number | string | null): Observable<any[]> {
     return this.http.get<any[]>(`${this.API_URL}/${jobId}`);
   }
-  addJob(jobId: number | string | null, body:object): Observable<any[]>{
+  addJob(jobId: number | string | null, body:any): Observable<any[]>{
     return this.http.post<any[]>(`${this.API_URL}/store/${jobId}`, body);
   }
-  editJob(jobId: number | string | null, body:object): Observable<any[]>{
+  editJob(jobId: number | string | null, body:any): Observable<any[]>{
     return this.http.put<any[]>(`${this.API_URL}/update/${jobId}`, body);
   }
   deleteJob(jobId: number | string | null): Observable<any[]>{
-    return this.http.delete<any[]>(`${this.API_URL}/delete${jobId}`);
+    return this.http.delete<any[]>(`${this.API_URL}/delete/${jobId}`);
+  }
+
+  searchJob(){
+
   }
 
 }
