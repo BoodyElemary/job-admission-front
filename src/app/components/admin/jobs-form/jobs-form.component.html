@@ -3,7 +3,7 @@
 <mat-card class="mt-5">
   <mat-card-content>
     <div class="col-6 message">{{job.message}}</div>
-<form name="questionsForm" (ngSubmit)="onSubmit()" [formGroup]="JobForm">
+<form name="jobsForm" (ngSubmit)="onSubmit()" [formGroup]="JobForm">
   <div id="form-header" class="mt-4">
     <div class="d-flex flex-column gap-3">
       <label for="title">Enter Job Title:</label>
