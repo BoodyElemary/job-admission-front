@@ -15,6 +15,18 @@
     </div>
     <!-- //// -->
     <div class="d-flex flex-column gap-3">
+      <mat-form-field appearance="outline" class="col-lg-3 col-12">
+        <mat-label for="state">Select Job State"</mat-label>
+        <mat-select formControlName ="state" required  >
+          <mat-option value="available" >Available</mat-option>
+          <mat-option value="unavailable">UnAvailable</mat-option>
+        </mat-select>
+        <mat-error *ngIf="JobForm.get('state')?.invalid" class="my-1">please choose the state</mat-error>
+      </mat-form-field>
+    </div>
+    <!-- //// -->
+
+    <div class="d-flex flex-column gap-3">
       <label for="details">Enter Job Details:</label>
       <mat-form-field appearance="outline" class="col-lg-6 col-12 mb-2"  >
         <mat-label>Enter Job Details</mat-label>
@@ -23,6 +35,7 @@
       </mat-form-field>
     </div>
     <!-- //// -->
+
     <div class="d-flex flex-column gap-3">
       <label for="open_date">Enter Job Open Date:</label>
       <mat-form-field appearance="outline" class="col-lg-6 col-12 mb-2"  >
