@@ -14,8 +14,8 @@ export class JobsService {
   getJob(jobId: number | string | null): Observable<any[]> {
     return this.http.get<any[]>(`${this.API_URL}/${jobId}`);
   }
-  addJob(jobId: number | string | null, body:any): Observable<any[]>{
-    return this.http.post<any[]>(`${this.API_URL}/store/${jobId}`, body);
+  addJob(body:any): Observable<any[]>{
+    return this.http.post<any[]>(`${this.API_URL}/store`, body);
   }
   editJob(jobId: number | string | null, body:any): Observable<any[]>{
     return this.http.put<any[]>(`${this.API_URL}/update/${jobId}`, body);
