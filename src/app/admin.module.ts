@@ -9,6 +9,7 @@ import { AddQuestionsComponent } from './components/admin/add-questions/add-ques
 import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
 import { JobsFormComponent } from './components/admin/jobs-form/jobs-form.component';
+import { EditJobsComponent } from './components/admin/edit-jobs/edit-jobs.component';
 const routes: Routes = [
   { path: 'allQuestions', component: AllQuestionsComponent },
   { path: 'jobQuestions/:id', component: JobQuestionsComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'allQuestions/editQuestion/:id', component: EditQuestionsComponent },
   { path: 'allJobs', component: AllJobsComponent },
   { path: 'allJobs/addJob', component: JobsFormComponent },
+  { path: 'allJobs/editJob/:id', component: EditJobsComponent },
   { path: 'dashboard', component: AdminHomeComponent, title: 'dashboard' },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 

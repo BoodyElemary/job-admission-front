@@ -59,6 +59,11 @@ export class AdminHeaderComponent {
             this.btnRoute="allJobs/addJob";
             break;
 
+          case "EditJobsComponent":
+            this.header.name= "Edit Job";
+            this.header.icon="file_copy";
+          break;
+
           case "JobsFormComponent":
             this.header.name= "Add Job";
             this.header.icon="file_copy";

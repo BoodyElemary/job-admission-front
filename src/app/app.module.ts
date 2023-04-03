@@ -42,6 +42,7 @@ import { SubmitExamDialogComponent } from './components/submit-exam-dialog/submi
 import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component'
 import { JobsFormComponent } from './components/admin/jobs-form/jobs-form.component'
+import { EditJobsComponent } from './components/admin/edit-jobs/edit-jobs.component'
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { JobsFormComponent } from './components/admin/jobs-form/jobs-form.compon
     EditQuestionsComponent,
     AllJobsComponent,
     JobsFormComponent,
+    EditJobsComponent,
   ],
   imports: [
     BrowserModule,
