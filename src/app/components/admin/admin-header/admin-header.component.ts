@@ -51,7 +51,14 @@ export class AdminHeaderComponent {
           this.header.name= "Edit Question";
           this.header.icon="note_alt";
           break;
+          case "AllJobsComponent":
+            this.header.name= "All Jobs";
+            this.header.icon="file_copy";
+            this.activated=true;
+            this.btnText="Add Job";
+            this.btnRoute="allJobs/addJob";
 
+            break;
       default:
         this.header.name= "AllQuestions";
         this.header.icon="person";
