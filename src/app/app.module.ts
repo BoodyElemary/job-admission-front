@@ -40,7 +40,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SubmitExamDialogComponent } from './components/submit-exam-dialog/submit-exam-dialog.component';
 import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
-import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
+import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component'
+import { JobsFormComponent } from './components/admin/jobs-form/jobs-form.component'
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component
     SubmitExamDialogComponent,
     EditQuestionsComponent,
     AllJobsComponent,
+    JobsFormComponent,
   ],
   imports: [
     BrowserModule,

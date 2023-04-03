@@ -8,13 +8,14 @@ import { JobQuestionsComponent } from './components/admin/job-questions/job-ques
 import { AddQuestionsComponent } from './components/admin/add-questions/add-questions.component';
 import { EditQuestionsComponent } from './components/admin/edit-questions/edit-questions.component';
 import { AllJobsComponent } from './components/admin/all-jobs/all-jobs.component';
+import { JobsFormComponent } from './components/admin/jobs-form/jobs-form.component';
 const routes: Routes = [
   { path: 'allQuestions', component: AllQuestionsComponent },
   { path: 'jobQuestions/:id', component: JobQuestionsComponent },
   { path: 'allQuestions/addQuestion', component: AddQuestionsComponent },
   { path: 'allQuestions/editQuestion/:id', component: EditQuestionsComponent },
   { path: 'allJobs', component: AllJobsComponent },
-
+  { path: 'allJobs/addJob', component: JobsFormComponent },
   { path: 'dashboard', component: AdminHomeComponent, title: 'dashboard' },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
