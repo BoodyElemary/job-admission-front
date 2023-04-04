@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators,FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -56,9 +57,15 @@ export class EditJobsComponent {
   }
 
   convertStampToDate(timestamp:any){
-    var todate=new Date(timestamp).getDate();
-    var tomonth=new Date(timestamp).getMonth()+1;
-    var toyear=new Date(timestamp).getFullYear();
+    var todate = String(new Date(timestamp).getDate())
+    var tomonth:string = String(new Date(timestamp).getMonth()+1)
+    var toyear = new Date(timestamp).getFullYear();
+    if(parseInt(todate)<10){
+      todate = '0'+todate;
+    }
+    if(parseInt(tomonth)<10){
+      tomonth = '0'+tomonth;
+    }
     var original_date = `${toyear}-${tomonth}-${todate}`;
     return original_date;
   }
@@ -83,3 +90,7 @@ export class EditJobsComponent {
   }
 
 }
+function moment(dateStr: any, arg1: string) {
+  throw new Error('Function not implemented.');
+}
+
