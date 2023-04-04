@@ -18,7 +18,7 @@
       <label for="details">Enter Job Details:</label>
       <mat-form-field appearance="outline" class="col-lg-6 col-12 mb-2"  >
         <mat-label>Enter Job Details</mat-label>
-        <input matInput placeholder="" id="details" formControlName="details" >
+        <textarea matInput placeholder="" id="details" formControlName="details" rows="3" ></textarea>
         <mat-error *ngIf="JobForm.get('details')?.invalid" class="my-1">please enter details</mat-error>
       </mat-form-field>
     </div>
